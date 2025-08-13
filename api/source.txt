@@ -1,0 +1,14 @@
+site:bbc.com
+site:abcnews.go.com
+site:axios.com
+site:cbsnews.com
+site:foxnews.com
+site:nbcnews.com
+site:npr.org
+site:pbs.org
+site:politico.com
+site:propublica.org
+site:revealnews.org
+site:theguardian.com
+site:theintercept.com
+site:corp.voxmedia.com

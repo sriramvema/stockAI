@@ -1,3 +1,14 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #181A1C; /* ensures the background goes to the top */
+}
+
+.App {
+  min-height: 100%;
+  background-color: rgba(0, 0, 0);
+}
+
 .App {
   text-align: center;
 }
@@ -14,7 +25,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #254991;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

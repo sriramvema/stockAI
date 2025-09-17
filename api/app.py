@@ -16,7 +16,7 @@ import anthropic
 import pandas as pd
 
 app = Flask(__name__)
-  # Enable CORS for all domains on all routes
+ 
 
 
 CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
@@ -54,7 +54,7 @@ def select_company():
     global COMPANY_NAME
     COMPANY_NAME = data['company']
 
-    # Now that the company is selected, crawl for articles
+    
     articles = find_credible_articles(10)
 
     if not articles:
@@ -107,14 +107,13 @@ def find_credible_articles(num_results):
                     "snippet": result.get("snippet")
                 })
             count += 1
-    # If fewer articles than requested, optionally try to fetch more recursively
+    
     if count < num_results and count > 0:
         added_articles = find_credible_articles(num_results - count)
         articles.extend(added_articles)
     return articles
 
-# Other functions (fetch_article_text, summarize_text, opinion) remain unchanged
-# Add them below if you want the full file, or let me know if you want me to include them
+
 @app.route('/summary', methods=['POST'])
 def summarize_articles():
     data = request.get_json()
@@ -133,9 +132,9 @@ def summarize_articles():
             if summary:
                 summaries.append(summary)
                 article["summary"] = summary
-            time.sleep(2)  # Rate limiting
+            time.sleep(2)  
 
-    # Merge all summaries into a final overview (opinion)
+    
     final_opinion = opinion("\n\n".join(summaries))
 
     return jsonify({
@@ -148,7 +147,7 @@ def opinion(text, max_tokens=1000):
         client = anthropic.Anthropic(api_key="ANTHROPIC API KEY")
 
         response = client.messages.create(
-            model="claude-3-haiku-20240307",  # Or use "claude-3-haiku-20240307" for faster results
+            model="claude-3-haiku-20240307",  
             max_tokens=max_tokens,
             temperature=0.7,
             messages=[
@@ -245,10 +244,10 @@ import anthropic
 def summarize_text(text, max_tokens=300):
     print("Summarizing...")
     try:
-        client = anthropic.Anthropic(api_key="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")
+        client = anthropic.Anthropic(api_key="ANTHROPIC API KEY")
 
         response = client.messages.create(
-            model="claude-3-haiku-20240307",  # Or use "claude-3-haiku-20240307" for faster results
+            model="claude-3-haiku-20240307",  
             max_tokens=max_tokens,
             temperature=0.7,
             messages=[
